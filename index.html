@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사회복지사 자격증 체크리스트</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+
+    :root {
+      --bg-1: #fff6f6;
+      --bg-2: #fffdf7;
+      --main: #ff6b7a;
+      --main-dark: #e84f61;
+      --main-soft: #fff0f2;
+      --yellow: #ffd66b;
+      --green: #55c887;
+      --blue: #5e9cff;
+      --ink: #27272a;
+      --muted: #71717a;
+      --line: #eadde0;
+      --panel: rgba(255, 255, 255, 0.86);
+      --white: #ffffff;
+      --good: #11845b;
+      --bad: #df3b45;
+      --shadow: 0 18px 45px rgba(101, 60, 67, 0.16);
+      --window-radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 107, 122, 0.28), transparent 28rem),
+        radial-gradient(circle at 85% 10%, rgba(255, 214, 107, 0.25), transparent 25rem),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .desktop {
+      width: min(1400px, calc(100vw - 28px));
+      height: min(920px, calc(100dvh - 28px));
+      margin: 14px auto;
+      display: grid;
+      grid-template-rows: 62px minmax(0, 1fr) 174px;
+      gap: 14px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px 10px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--main), #ff9a8d);
+      box-shadow: 0 10px 18px rgba(255, 107, 122, 0.25);
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      min-width: 0;
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: clamp(1.35rem, 3vw, 2.05rem);
+      color: #3b2f33;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: -0.03em;
+    }
+
+    .top-chip {
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--main-soft);
+      color: var(--main-dark);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border: 1px solid rgba(255, 107, 122, 0.20);
+    }
+
+    .workspace {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 372px minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .window {
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: var(--window-radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .window-titlebar {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(234, 221, 224, 0.85);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 246, 247, 0.68));
+    }
+
+    .window-titlebar strong {
+      min-width: 0;
+      color: #46363b;
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .traffic {
+      display: flex;
+      gap: 7px;
+      flex: 0 0 auto;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .dot.red { background: var(--main); }
+    .dot.yellow { background: var(--yellow); }
+    .dot.green { background: var(--green); }
+
+    .window-body {
+      height: calc(100% - 48px);
+      padding: 16px;
+      overflow: auto;
+    }
+
+    .status-window .window-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .result-box {
+      padding: 18px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .result-row span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .result-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 82px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      background: rgba(223, 59, 69, 0.10);
+      color: var(--bad);
+    }
+
+    .result-pill.good {
+      background: rgba(17, 132, 91, 0.10);
+      color: var(--good);
+    }
+
+    .big-number {
+      margin: 0;
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--main-dark);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 14px 0 8px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.93rem;
+    }
+
+    .progress {
+      height: 16px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #f4edf0;
+      border: 1px solid var(--line);
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--main), #ffb199);
+      transition: width 0.24s ease;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+
+    .metric small {
+      display: block;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 0.82rem;
+    }
+
+    .metric b {
+      display: block;
+      margin-top: 2px;
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #3f3438;
+    }
+
+    .message {
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: var(--main-soft);
+      color: #8f2835;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .message.good {
+      background: rgba(17, 132, 91, 0.10);
+      color: #0f684b;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-top: auto;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 12px;
+      font-weight: 900;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      grid-column: span 2;
+      color: white;
+      background: linear-gradient(135deg, var(--main), #ff987f);
+      box-shadow: 0 11px 22px rgba(255, 107, 122, 0.24);
+    }
+
+    .btn.ghost {
+      background: #fff;
+      color: #51464b;
+      border: 1px solid var(--line);
+    }
+
+    .course-layout {
+      height: 100%;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.48fr) minmax(320px, 0.52fr);
+      gap: 14px;
+    }
+
+    .course-panel {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
+    }
+
+    .course-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .course-panel-head h2 {
+      margin: 0;
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+      color: #3f3438;
+    }
+
+    .course-panel-head p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .count-chip {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--main-dark);
+      background: var(--main-soft);
+      font-size: 0.88rem;
+      font-weight: 900;
+      border: 1px solid rgba(255, 107, 122, 0.18);
+    }
+
+    .course-list {
+      min-height: 0;
+      overflow: auto;
+      display: grid;
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    .course {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 11px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(234, 221, 224, 0.95);
+      background: #fff;
+      transition: 0.15s ease;
+      cursor: pointer;
+    }
+
+    .course:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 107, 122, 0.48);
+      background: #fffafa;
+    }
+
+    .course input {
+      width: 19px;
+      height: 19px;
+      accent-color: var(--main);
+      flex: 0 0 auto;
+    }
+
+    .course span {
+      font-weight: 850;
+      color: #383136;
+      word-break: keep-all;
+    }
+
+    .course.done {
+      background: rgba(17, 132, 91, 0.08);
+      border-color: rgba(17, 132, 91, 0.22);
+    }
+
+    .summary-mini {
+      margin-top: 14px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 76px 1fr 74px;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem;
+      align-items: center;
+    }
+
+    .summary-row:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-row strong {
+      color: var(--main-dark);
+    }
+
+    .summary-row span {
+      color: #554b50;
+      font-weight: 800;
+    }
+
+    .summary-row em {
+      text-align: right;
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .bottom-dock {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-window .window-titlebar {
+      height: 40px;
+      padding-inline: 13px;
+    }
+
+    .mini-window .window-titlebar strong {
+      font-size: 0.98rem;
+    }
+
+    .mini-window .dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    .mini-window .window-body {
+      height: calc(100% - 40px);
+      padding: 12px;
+      overflow: auto;
+    }
+
+    .weather-temp {
+      margin: 0;
+      color: var(--main-dark);
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .widget-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .widget-list li,
+    .weather-note {
+      padding: 8px 9px;
+      border-radius: 13px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: #51464b;
+      font-size: 0.84rem;
+      font-weight: 800;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+    .widget-list a:hover {
+      color: var(--main-dark);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%) translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 50;
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: white;
+      background: #2f262b;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+      font-weight: 900;
+      transition: 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      body {
+        overflow: auto;
+      }
+
+      .desktop {
+        height: auto;
+        min-height: calc(100dvh - 28px);
+        grid-template-rows: auto auto auto;
+      }
+
+      .workspace,
+      .course-layout,
+      .bottom-dock {
+        grid-template-columns: 1fr;
+      }
+
+      .window-body,
+      .mini-window .window-body {
+        max-height: none;
+      }
+
+      .course-list {
+        max-height: 420px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .desktop {
+        width: calc(100vw - 16px);
+        margin: 8px auto;
+        gap: 10px;
+      }
+
+      .top-bar,
+      .workspace,
+      .bottom-dock {
+        gap: 10px;
+      }
+
+      .top-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 20px;
+      }
+
+      .top-chip {
+        white-space: normal;
+      }
+
+      .metrics,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .btn.primary {
+        grid-column: span 1;
+      }
+
+      .summary-row {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .summary-row em {
+        grid-column: 2;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-mark">복</div>
+        <h1>사회복지사 자격증 체크리스트</h1>
+      </div>
+      <div class="top-chip">사회복지사 2급 · 필수 10과목 전체 이수 / 선택 7과목 이상 이수</div>
+    </header>
+
+    <main class="workspace">
+      <section class="window status-window" aria-label="자격증 이수 판정 창">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <strong>자격 판정</strong>
+        </div>
+
+        <div class="window-body">
+          <div class="result-box">
+            <div class="result-row">
+              <span>현재 상태</span>
+              <b id="resultPill" class="result-pill">미충족</b>
+            </div>
+            <p id="bigProgress" class="big-number">0 / 17</p>
+            <div class="progress-label">
+              <span>전체 진행률</span>
+              <span id="progressText">0%</span>
+            </div>
+            <div class="progress" aria-hidden="true">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <small>필수 이수</small>
+              <b><span id="requiredDone">0</span> / 10</b>
+            </div>
+            <div class="metric">
+              <small>선택 이수</small>
+              <b><span id="electiveDone">0</span> / 7</b>
+            </div>
+            <div class="metric">
+              <small>남은 필수</small>
+              <b><span id="requiredLeft">10</span>과목</b>
+            </div>
+            <div class="metric">
+              <small>남은 선택</small>
+              <b><span id="electiveLeft">7</span>과목</b>
+            </div>
+          </div>
+
+          <div id="message" class="message">필수 10과목과 선택 7과목을 채우면 사회복지사 2급 과목 기준을 충족합니다.</div>
+
+          <div class="summary-mini" aria-label="이수 요약">
+            <div class="summary-row">
+              <strong>필수</strong>
+              <span id="requiredSummary">0과목 이수 · 10과목 남음</span>
+              <em id="requiredStatus">미충족</em>
+            </div>
+            <div class="summary-row">
+              <strong>선택</strong>
+              <span id="electiveSummary">0과목 이수 · 7과목 남음</span>
+              <em id="electiveStatus">미충족</em>
+            </div>
+            <div class="summary-row">
+              <strong>학점</strong>
+              <span id="creditSummary">0학점 이수 · 51학점 남음</span>
+              <em>3학점 기준</em>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn primary" id="copyBtn">이수 현황 복사</button>
+            <button type="button" class="btn ghost" id="printBtn">인쇄/PDF</button>
+            <button type="button" class="btn ghost" id="resetBtn">체크 초기화</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="window courses-window" aria-label="과목 체크 창">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <strong>과목 체크</strong>
+        </div>
+
+        <div class="window-body">
+          <div class="course-layout">
+            <article class="course-panel">
+              <div class="course-panel-head">
+                <div>
+                  <h2>전공필수</h2>
+                  <p>10과목 모두 체크되어야 합니다.</p>
+                </div>
+                <span id="requiredChip" class="count-chip">0 / 10</span>
+              </div>
+              <div id="requiredGrid" class="course-list"></div>
+            </article>
+
+            <article class="course-panel">
+              <div class="course-panel-head">
+                <div>
+                  <h2>전공선택</h2>
+                  <p>7과목 이상 체크하면 충족됩니다.</p>
+                </div>
+                <span id="electiveChip" class="count-chip">0 / 7</span>
+              </div>
+              <div id="electiveGrid" class="course-list"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="bottom-dock" aria-label="하단 정보 창">
+      <article class="window mini-window">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+          <strong>날씨</strong>
+        </div>
+        <div class="window-body" id="weatherBox">
+          <div class="weather-note">불러오는 중</div>
+        </div>
+      </article>
+
+      <article class="window mini-window">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+          <strong>부산 이슈</strong>
+        </div>
+        <div class="window-body">
+          <ul id="busanNews" class="widget-list"><li>불러오는 중</li></ul>
+        </div>
+      </article>
+
+      <article class="window mini-window">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+          <strong>국립부경대학교 뉴스</strong>
+        </div>
+        <div class="window-body">
+          <ul id="pknuNews" class="widget-list"><li>불러오는 중</li></ul>
+        </div>
+      </article>
+
+      <article class="window mini-window">
+        <div class="window-titlebar">
+          <div class="traffic" aria-hidden="true"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+          <strong>사회복지 통계</strong>
+        </div>
+        <div class="window-body">
+          <ul class="widget-list">
+            <li><a href="https://kosis.kr" target="_blank" rel="noopener">KOSIS 국가통계포털</a></li>
+            <li><a href="https://www.index.go.kr" target="_blank" rel="noopener">e-나라지표</a></li>
+            <li><a href="https://www.mohw.go.kr" target="_blank" rel="noopener">보건복지부 자료실</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">완료</div>
+
+  <script>
+    const REQUIRED_COURSES = [
+      '사회복지(학)개론',
+      '사회복지법제(와 실천)',
+      '사회복지실천기술론',
+      '사회복지실천론',
+      '사회복지정책론',
+      '사회복지조사론',
+      '사회복지행정론',
+      '사회복지현장실습',
+      '인간행동과 사회환경',
+      '지역사회복지론'
+    ];
+
+    const ELECTIVE_COURSES = [
+      '가족복지론',
+      '가족상담 및 가족치료',
+      '교정복지론',
+      '국제사회복지론',
+      '노인복지론',
+      '복지국가론',
+      '빈곤론',
+      '사례관리론',
+      '사회문제론',
+      '사회보장론',
+      '사회복지역사',
+      '사회복지와 문화다양성',
+      '사회복지와 인권',
+      '사회복지윤리와 철학',
+      '사회복지자료분석론',
+      '사회복지지도감독론',
+      '산업복지론',
+      '아동복지론',
+      '여성복지론',
+      '의료사회복지론',
+      '자원봉사론',
+      '장애인복지론',
+      '정신건강론',
+      '정신건강사회복지론',
+      '청소년복지론',
+      '프로그램 개발과 평가',
+      '학교사회복지론'
+    ];
+
+    const REQUIRED_TARGET = 10;
+    const ELECTIVE_TARGET = 7;
+    const CREDIT_PER_COURSE = 3;
+    const TOTAL_TARGET = REQUIRED_TARGET + ELECTIVE_TARGET;
+    const STORAGE_KEY = 'sw-license-window-checklist-v1';
+    const $ = (selector) => document.querySelector(selector);
+
+    function idFor(type, index) {
+      return `${type}-${index}`;
+    }
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveState() {
+      const state = {};
+      document.querySelectorAll('.course input').forEach((input) => {
+        state[input.id] = input.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function renderCourseList(target, type, courses) {
+      const saved = loadState();
+      target.innerHTML = courses.map((course, index) => {
+        const id = idFor(type, index);
+        return `
+          <label class="course" for="${id}">
+            <input id="${id}" type="checkbox" data-type="${type}" ${saved[id] ? 'checked' : ''}>
+            <span>${course}</span>
+          </label>
+        `;
+      }).join('');
+    }
+
+    function renderCourses() {
+      renderCourseList($('#requiredGrid'), 'required', REQUIRED_COURSES);
+      renderCourseList($('#electiveGrid'), 'elective', ELECTIVE_COURSES);
+
+      document.querySelectorAll('.course input').forEach((input) => {
+        input.closest('.course').classList.toggle('done', input.checked);
+        input.addEventListener('change', () => {
+          input.closest('.course').classList.toggle('done', input.checked);
+          saveState();
+          updateStatus();
+        });
+      });
+    }
+
+    function countChecked(type) {
+      return Array.from(document.querySelectorAll(`input[data-type="${type}"]`)).filter((input) => input.checked).length;
+    }
+
+    function updateStatus() {
+      const requiredDone = countChecked('required');
+      const electiveRaw = countChecked('elective');
+      const electiveCounted = Math.min(electiveRaw, ELECTIVE_TARGET);
+      const requiredLeft = Math.max(REQUIRED_TARGET - requiredDone, 0);
+      const electiveLeft = Math.max(ELECTIVE_TARGET - electiveRaw, 0);
+      const countedTotal = requiredDone + electiveCounted;
+      const totalLeft = requiredLeft + electiveLeft;
+      const creditsDone = countedTotal * CREDIT_PER_COURSE;
+      const creditsLeft = totalLeft * CREDIT_PER_COURSE;
+      const percentage = Math.round((countedTotal / TOTAL_TARGET) * 100);
+      const requiredOk = requiredDone >= REQUIRED_TARGET;
+      const electiveOk = electiveRaw >= ELECTIVE_TARGET;
+      const allOk = requiredOk && electiveOk;
+
+      $('#requiredDone').textContent = requiredDone;
+      $('#electiveDone').textContent = electiveRaw;
+      $('#requiredLeft').textContent = requiredLeft;
+      $('#electiveLeft').textContent = electiveLeft;
+      $('#requiredChip').textContent = `${requiredDone} / ${REQUIRED_TARGET}`;
+      $('#electiveChip').textContent = `${Math.min(electiveRaw, ELECTIVE_TARGET)} / ${ELECTIVE_TARGET}`;
+      $('#bigProgress').textContent = `${countedTotal} / ${TOTAL_TARGET}`;
+      $('#progressText').textContent = `${percentage}%`;
+      $('#progressBar').style.width = `${percentage}%`;
+      $('#requiredSummary').textContent = `${requiredDone}과목 이수 · ${requiredLeft}과목 남음`;
+      $('#electiveSummary').textContent = `${electiveRaw}과목 이수 · ${electiveLeft}과목 남음`;
+      $('#creditSummary').textContent = `${creditsDone}학점 이수 · ${creditsLeft}학점 남음`;
+      $('#requiredStatus').textContent = requiredOk ? '충족' : '미충족';
+      $('#electiveStatus').textContent = electiveOk ? '충족' : '미충족';
+
+      const resultPill = $('#resultPill');
+      const message = $('#message');
+
+      if (allOk) {
+        resultPill.textContent = '충족';
+        resultPill.classList.add('good');
+        message.classList.add('good');
+        message.textContent = '사회복지사 2급 과목 기준을 충족했습니다. 실제 발급 전에는 실습 인정과 세부 요건을 한 번 더 확인하세요.';
+      } else {
+        resultPill.textContent = '미충족';
+        resultPill.classList.remove('good');
+        message.classList.remove('good');
+        message.textContent = `아직 자격 요건을 충족하지 못했습니다. 필수 ${requiredLeft}과목, 선택 ${electiveLeft}과목이 더 필요합니다.`;
+      }
+    }
+
+    function checkedNames(type, courses) {
+      return courses.filter((course, index) => {
+        const input = document.getElementById(idFor(type, index));
+        return input && input.checked;
+      });
+    }
+
+    function showToast(text) {
+      const toast = $('#toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1700);
+    }
+
+    async function copyStatus() {
+      const requiredDone = countChecked('required');
+      const electiveDone = countChecked('elective');
+      const requiredLeft = Math.max(REQUIRED_TARGET - requiredDone, 0);
+      const electiveLeft = Math.max(ELECTIVE_TARGET - electiveDone, 0);
+      const allOk = requiredLeft === 0 && electiveLeft === 0;
+      const requiredCourses = checkedNames('required', REQUIRED_COURSES);
+      const electiveCourses = checkedNames('elective', ELECTIVE_COURSES);
+
+      const text = [
+        '[사회복지사 자격증 체크리스트]',
+        `판정: ${allOk ? '사회복지사 2급 과목 기준 충족' : '미충족'}`,
+        `필수: ${requiredDone}/10, 남은 필수 ${requiredLeft}과목`,
+        `선택: ${electiveDone}/7, 남은 선택 ${electiveLeft}과목`,
+        '',
+        `이수한 필수 과목: ${requiredCourses.length ? requiredCourses.join(', ') : '없음'}`,
+        `이수한 선택 과목: ${electiveCourses.length ? electiveCourses.join(', ') : '없음'}`
+      ].join('\n');
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('이수 현황이 복사되었습니다.');
+      } catch (error) {
+        showToast('복사 기능을 사용할 수 없습니다.');
+      }
+    }
+
+    function resetChecks() {
+      if (!confirm('체크한 과목을 모두 초기화할까요?')) return;
+      document.querySelectorAll('.course input').forEach((input) => {
+        input.checked = false;
+        input.closest('.course').classList.remove('done');
+      });
+      localStorage.removeItem(STORAGE_KEY);
+      updateStatus();
+      showToast('체크가 초기화되었습니다.');
+    }
+
+    async function loadWeather() {
+      const weatherBox = $('#weatherBox');
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FSeoul';
+      const weatherNames = {
+        0: '맑음', 1: '대체로 맑음', 2: '부분적으로 흐림', 3: '흐림',
+        45: '안개', 48: '안개', 51: '약한 이슬비', 53: '이슬비', 55: '강한 이슬비',
+        61: '약한 비', 63: '비', 65: '강한 비', 71: '약한 눈', 73: '눈', 75: '강한 눈',
+        80: '소나기', 95: '뇌우'
+      };
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('weather');
+        const data = await response.json();
+        const now = data.current;
+        weatherBox.innerHTML = `
+          <p class="weather-temp">${Math.round(now.temperature_2m)}℃</p>
+          <div class="weather-note">부산 · ${weatherNames[now.weather_code] || '날씨'} · 습도 ${now.relative_humidity_2m}% · 풍속 ${now.wind_speed_10m}km/h</div>
+        `;
+      } catch (error) {
+        weatherBox.innerHTML = '<div class="weather-note">날씨를 불러오지 못했습니다.</div>';
+      }
+    }
+
+    function newsSearchUrl(query) {
+      return `https://news.google.com/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR%3Ako`;
+    }
+
+    async function loadNews(targetId, query) {
+      const target = document.getElementById(targetId);
+      const rss = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
+      const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(rss)}`;
+
+      try {
+        const response = await fetch(proxy);
+        if (!response.ok) throw new Error('news');
+        const text = await response.text();
+        const xml = new DOMParser().parseFromString(text, 'application/xml');
+        const items = Array.from(xml.querySelectorAll('item')).slice(0, 3);
+        if (!items.length) throw new Error('empty');
+        target.innerHTML = items.map((item) => {
+          const title = item.querySelector('title')?.textContent || '뉴스';
+          const link = item.querySelector('link')?.textContent || newsSearchUrl(query);
+          return `<li><a href="${link}" target="_blank" rel="noopener">${title}</a></li>`;
+        }).join('');
+      } catch (error) {
+        target.innerHTML = `<li><a href="${newsSearchUrl(query)}" target="_blank" rel="noopener">Google News에서 확인하기</a></li>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCourses();
+      updateStatus();
+      loadWeather();
+      loadNews('busanNews', '부산 이슈');
+      loadNews('pknuNews', '국립부경대학교');
+
+      $('#copyBtn').addEventListener('click', copyStatus);
+      $('#printBtn').addEventListener('click', () => window.print());
+      $('#resetBtn').addEventListener('click', resetChecks);
+    });
+  </script>
+</body>
+</html>
