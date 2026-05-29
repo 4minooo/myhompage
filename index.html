@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사회복지학 실무역량 과제</title>
+  <style>
+    :root{
+      --main:#ff5c66;
+      --main-light:#ffa59d;
+      --ink:#2f2f2f;
+      --muted:#8a8a8a;
+      --line:#ffd1d1;
+      --paper:#fffdfb;
+      --soft:#fff3f1;
+      --shadow:0 18px 45px rgba(255,92,102,.12);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#fff 0%,#fff7f5 52%,#fff 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    /* 상단 뉴스레터형 헤더 */
+    .newsletter-head{
+      padding:18px 0 26px;
+      background:#fff;
+      border-bottom:1px solid #ffe4e2;
+      position:relative;
+      overflow:hidden;
+    }
+    .newsletter-head::before,
+    .newsletter-head::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      height:4px;
+      background:var(--main);
+    }
+    .newsletter-head::before{top:18px}
+    .newsletter-head::after{top:27px;opacity:.65}
+    .vol{
+      position:absolute;
+      right:28px;
+      top:0;
+      color:var(--main);
+      font-size:18px;
+      letter-spacing:.08em;
+    }
+    .department{
+      margin-top:30px;
+      color:#6f6f6f;
+      font-size:17px;
+      letter-spacing:-.02em;
+    }
+    .main-title{
+      margin:6px 0 8px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(46px, 8vw, 91px);
+      line-height:.92;
+      letter-spacing:.04em;
+      color:var(--main);
+      font-weight:900;
+      text-transform:uppercase;
+    }
+    .title-ko{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border:1px solid var(--line);
+      border-left:6px solid var(--main);
+      color:#555;
+      font-weight:700;
+      background:#fff;
+    }
+    .contact-line{
+      margin-top:14px;
+      padding:5px 0;
+      border-top:3px solid var(--main);
+      border-bottom:1px solid var(--main);
+      color:#aaa;
+      font-size:12px;
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1.2fr;
+      gap:14px;
+      white-space:nowrap;
+      overflow:hidden;
+    }
+
+    /* 히어로 */
+    .hero{
+      position:relative;
+      min-height:560px;
+      display:grid;
+      align-items:center;
+      overflow:hidden;
+      background:radial-gradient(circle at 70% 18%, rgba(255,165,157,.22), transparent 34%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:36px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+    .watermark{
+      position:absolute;
+      right:min(5vw,60px);
+      bottom:-70px;
+      font-family:Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size:clamp(250px, 39vw, 610px);
+      letter-spacing:-.16em;
+      color:rgba(255,92,102,.16);
+      line-height:.75;
+      pointer-events:none;
+      user-select:none;
+      transform:skew(-7deg);
+    }
+    .label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--main);
+      font-weight:800;
+      letter-spacing:.12em;
+      font-size:13px;
+      text-transform:uppercase;
+    }
+    .label::before{
+      content:"";
+      width:34px;height:3px;background:var(--main);display:inline-block;
+    }
+    .hero h2{
+      margin:18px 0 18px;
+      font-size:clamp(38px, 6vw, 78px);
+      line-height:1.02;
+      letter-spacing:-.07em;
+    }
+    .hero h2 span{color:var(--main)}
+    .hero p{
+      color:#696969;
+      font-size:18px;
+      line-height:1.75;
+      max-width:640px;
+      margin:0 0 26px;
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid var(--main);
+      font-weight:800;
+      transition:.25s ease;
+    }
+    .btn.primary{background:var(--main);color:#fff;box-shadow:0 10px 26px rgba(255,92,102,.28)}
+    .btn.ghost{background:#fff;color:var(--main)}
+    .btn:hover{transform:translateY(-2px)}
+    .hero-card{
+      background:rgba(255,255,255,.82);
+      backdrop-filter:blur(14px);
+      border:1px solid #ffe1dd;
+      box-shadow:var(--shadow);
+      border-radius:26px;
+      padding:26px;
+    }
+    .weather-main{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+    }
+    .weather-icon{font-size:52px;line-height:1}
+    .temp{
+      font-size:58px;
+      color:var(--main);
+      font-weight:900;
+      letter-spacing:-.06em;
+    }
+    .weather-sub{color:#777;line-height:1.7;margin:8px 0 0}
+    .mini-info{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .mini{
+      border-radius:16px;
+      background:var(--soft);
+      padding:13px;
+      text-align:center;
+    }
+    .mini strong{display:block;color:var(--main);font-size:18px;margin-top:3px}
+    .mini small{color:#777;font-weight:700}
+
+    /* 섹션 공통 */
+    main{padding:42px 0 80px}
+    .section{
+      margin-top:42px;
+      position:relative;
+    }
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:18px;
+      border-top:4px solid var(--main);
+      padding-top:16px;
+    }
+    .section-title{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--main);
+      font-size:clamp(31px, 4vw, 52px);
+      letter-spacing:.02em;
+      line-height:1;
+    }
+    .section-title em{
+      display:block;
+      font-family:"Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-style:normal;
+      color:#666;
+      font-size:15px;
+      letter-spacing:0;
+      margin-top:8px;
+    }
+    .source-note{font-size:13px;color:#9a9a9a;text-align:right;line-height:1.45}
+    .grid{display:grid;gap:18px}
+    .grid.three{grid-template-columns:repeat(3,1fr)}
+    .grid.two{grid-template-columns:repeat(2,1fr)}
+    .card{
+      background:#fff;
+      border:1px solid #ffe2df;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 12px 32px rgba(70,35,35,.06);
+      transition:.25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .card::after{
+      content:"";
+      position:absolute;
+      width:110px;height:110px;
+      border-radius:999px;
+      background:rgba(255,92,102,.08);
+      right:-42px;top:-42px;
+    }
+    .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--main);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.04em;
+      margin-bottom:12px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:21px;
+      letter-spacing:-.04em;
+      line-height:1.35;
+      position:relative;z-index:1;
+    }
+    .card p{margin:0;color:#666;line-height:1.72;position:relative;z-index:1}
+    .card .date{font-size:12px;color:#aaa;margin-top:14px;display:block}
+    .list-clean{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .news-item{
+      display:block;
+      padding:15px 16px;
+      border:1px solid #ffe1dd;
+      border-radius:18px;
+      background:#fff;
+      transition:.2s ease;
+    }
+    .news-item:hover{border-color:var(--main);transform:translateX(4px)}
+    .news-title{font-weight:850;line-height:1.45;letter-spacing:-.03em}
+    .news-meta{display:block;color:#999;font-size:12px;margin-top:6px}
+    .loading{color:#aaa;padding:14px 0}
+
+    /* 통계 */
+    .stat-card{
+      min-height:188px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .stat-number{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:54px;
+      color:var(--main);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-.04em;
+      margin:8px 0;
+    }
+    .stat-number small{font-size:24px}
+    .source-link{
+      color:var(--main);
+      font-weight:800;
+      font-size:13px;
+      margin-top:14px;
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+    }
+    .source-link::after{content:"↗"}
+
+    .footer{
+      padding:28px 0 40px;
+      color:#999;
+      border-top:1px solid #ffe1dd;
+      background:#fff;
+      font-size:13px;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .top-button{
+      border:1px solid var(--line);
+      color:var(--main);
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      background:#fff;
+    }
+
+    @media (max-width:900px){
+      .hero{min-height:auto;padding:64px 0}
+      .hero-grid{grid-template-columns:1fr}
+      .grid.three,.grid.two{grid-template-columns:1fr}
+      .contact-line{grid-template-columns:1fr;font-size:11px;gap:2px}
+      .main-title{letter-spacing:.01em}
+      .mini-info{grid-template-columns:1fr 1fr 1fr}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .source-note{text-align:left}
+    }
+    @media (max-width:520px){
+      .wrap{width:min(100% - 22px,1120px)}
+      .department{font-size:14px}
+      .title-ko{font-size:13px}
+      .hero h2{font-size:42px}
+      .hero p{font-size:16px}
+      .weather-main{flex-direction:column}
+      .temp{font-size:48px}
+      .mini-info{grid-template-columns:1fr}
+      .vol{right:12px;font-size:14px}
+    }
+  </style>
+</head>
+<body>
+  <header class="newsletter-head" id="top">
+    <div class="vol">VOL. 005</div>
+    <div class="wrap">
+      <div class="department">국립부경대학교 사회복지학전공 / 사회복지학과</div>
+      <h1 class="main-title">PSI NEWS LETTER</h1>
+      <div class="title-ko">사회복지학 실무역량 과제</div>
+      <div class="contact-line">
+        <span>주소. 부산광역시 남구 용소로 45</span>
+        <span>TEL. 051.629.5450</span>
+        <span>HOMEPAGE. cms.pknu.ac.kr/psi</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="watermark">PS1</div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="label">Practice Capacity Project</div>
+        <h2>부산과 복지를 읽는<br><span>실무역량 페이지</span></h2>
+        <p>
+          날씨, 지역 이슈, 국립부경대학교 뉴스, 사회복지 통계를 한 화면에서 확인할 수 있도록 구성한 단일 HTML 홈페이지입니다.
+          GitHub Pages에 바로 업로드할 수 있도록 CSS와 JavaScript를 모두 포함했습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#weather">오늘의 날씨 보기</a>
+          <a class="btn ghost" href="#statistics">복지 통계 보기</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" id="weather" aria-label="부산 날씨">
+        <span class="tag">BUSAN WEATHER</span>
+        <div class="weather-main">
+          <div>
+            <div class="temp" id="temp">--℃</div>
+            <p class="weather-sub" id="weatherText">부산 현재 날씨를 불러오는 중입니다.</p>
+          </div>
+          <div class="weather-icon" id="weatherIcon">☁️</div>
+        </div>
+        <div class="mini-info">
+          <div class="mini"><small>풍속</small><strong id="wind">--</strong></div>
+          <div class="mini"><small>체감 포인트</small><strong id="weatherCode">--</strong></div>
+          <div class="mini"><small>업데이트</small><strong id="updated">--</strong></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="section" id="busan">
+      <div class="section-head">
+        <h2 class="section-title">BUSAN ISSUES<em>부산의 이슈</em></h2>
+        <div class="source-note">Google News RSS 기반으로 최신 기사를 불러옵니다.<br>연결이 실패하면 검색 링크가 표시됩니다.</div>
+      </div>
+      <div class="grid two">
+        <div class="card">
+          <span class="tag">LOCAL CHECK</span>
+          <h3>부산 지역 현안 살펴보기</h3>
+          <p>지역 복지, 청년, 고령화, 주거, 교통 등 사회복지와 연결되는 부산의 주요 현안을 확인하는 공간입니다.</p>
+          <a class="source-link" href="https://news.google.com/search?q=%EB%B6%80%EC%82%B0%20%EC%9D%B4%EC%8A%88&hl=ko&gl=KR&ceid=KR%3Ako" target="_blank" rel="noopener">부산 이슈 검색</a>
+        </div>
+        <div>
+          <ul class="list-clean" id="busanNews">
+            <li class="loading">부산 이슈를 불러오는 중입니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pknu">
+      <div class="section-head">
+        <h2 class="section-title">PKNU NEWS<em>국립부경대학교 관련 뉴스</em></h2>
+        <div class="source-note">국립부경대학교 관련 뉴스 검색 결과를 자동 표시합니다.</div>
+      </div>
+      <div class="grid two">
+        <div>
+          <ul class="list-clean" id="pknuNews">
+            <li class="loading">국립부경대학교 뉴스를 불러오는 중입니다.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">CAMPUS NEWS</span>
+          <h3>학과·대학 소식 연결</h3>
+          <p>대학 뉴스와 학과 홈페이지를 함께 확인할 수 있도록 구성했습니다. 필요하면 학과 행사, 공지사항, 실습 관련 안내도 이 영역에 추가할 수 있습니다.</p>
+          <a class="source-link" href="https://cms.pknu.ac.kr/psi" target="_blank" rel="noopener">사회복지학전공 홈페이지</a><br>
+          <a class="source-link" href="https://news.google.com/search?q=%EA%B5%AD%EB%A6%BD%EB%B6%80%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90&hl=ko&gl=KR&ceid=KR%3Ako" target="_blank" rel="noopener">국립부경대학교 뉴스 검색</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="statistics">
+      <div class="section-head">
+        <h2 class="section-title">WELFARE DATA<em>사회복지 관련 통계</em></h2>
+        <div class="source-note">과제 제출 전 공식 출처에서 최신 수치를 다시 확인하는 것을 권장합니다.</div>
+      </div>
+      <div class="grid three">
+        <article class="card stat-card">
+          <div>
+            <span class="tag">AGING</span>
+            <h3>전국 65세 이상 고령인구 비율</h3>
+            <div class="stat-number">20.3<small>%</small></div>
+            <p>2025년 기준, 우리나라는 전체 인구 중 65세 이상 인구가 20%를 넘는 초고령사회에 진입했습니다.</p>
+          </div>
+          <a class="source-link" href="https://mods.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000" target="_blank" rel="noopener">통계청 고령자 통계</a>
+        </article>
+        <article class="card stat-card">
+          <div>
+            <span class="tag">BUSAN</span>
+            <h3>부산 고령인구 비율</h3>
+            <div class="stat-number">25<small>%대</small></div>
+            <p>부산은 전국 평균보다 고령화 수준이 높은 지역으로, 지역사회복지 정책에서 노인복지와 돌봄 이슈가 중요합니다.</p>
+          </div>
+          <a class="source-link" href="https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1YL20631" target="_blank" rel="noopener">KOSIS 고령인구비율</a>
+        </article>
+        <article class="card stat-card">
+          <div>
+            <span class="tag">PUBLIC ASSISTANCE</span>
+            <h3>국민기초생활보장 수급 현황</h3>
+            <div class="stat-number">연 1회</div>
+            <p>기초생활보장 수급자 현황은 보건복지부·e-나라지표에서 매년 갱신됩니다. 빈곤과 공공부조를 이해하는 핵심 지표입니다.</p>
+          </div>
+          <a class="source-link" href="https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2760" target="_blank" rel="noopener">e-나라지표 확인</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2 class="section-title">PROJECT MEMO<em>홈페이지 활용 안내</em></h2>
+        <div class="source-note">단일 파일 구성: HTML + CSS + JavaScript</div>
+      </div>
+      <div class="grid three">
+        <div class="card">
+          <span class="tag">01</span>
+          <h3>GitHub Pages 업로드</h3>
+          <p>저장된 index.html 파일을 저장소에 업로드하면 기본 홈페이지 파일로 인식됩니다.</p>
+        </div>
+        <div class="card">
+          <span class="tag">02</span>
+          <h3>날씨 자동 표시</h3>
+          <p>Open-Meteo API를 사용해 부산의 현재 기온과 풍속을 불러옵니다. 별도 API 키가 필요 없습니다.</p>
+        </div>
+        <div class="card">
+          <span class="tag">03</span>
+          <h3>뉴스 자동 표시</h3>
+          <p>부산 이슈와 국립부경대학교 관련 뉴스는 RSS로 불러오며, 실패 시 검색 링크로 대체됩니다.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>© 2026 사회복지학 실무역량 과제 · Designed in PSI Newsletter style</div>
+      <a class="top-button" href="#top">맨 위로</a>
+    </div>
+  </footer>
+
+  <script>
+    const weatherMap = {
+      0:['맑음','☀️'], 1:['대체로 맑음','🌤️'], 2:['부분적으로 흐림','⛅'], 3:['흐림','☁️'],
+      45:['안개','🌫️'], 48:['안개','🌫️'],
+      51:['약한 이슬비','🌦️'], 53:['이슬비','🌦️'], 55:['강한 이슬비','🌧️'],
+      61:['약한 비','🌧️'], 63:['비','🌧️'], 65:['강한 비','🌧️'],
+      71:['약한 눈','🌨️'], 73:['눈','🌨️'], 75:['강한 눈','❄️'],
+      80:['소나기','🌦️'], 81:['소나기','🌦️'], 82:['강한 소나기','⛈️'],
+      95:['뇌우','⛈️'], 96:['우박 동반 뇌우','⛈️'], 99:['강한 우박 동반 뇌우','⛈️']
+    };
+
+    async function loadWeather(){
+      const url = 'https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&current_weather=true&timezone=Asia%2FSeoul';
+      try{
+        const res = await fetch(url);
+        if(!res.ok) throw new Error('weather response error');
+        const data = await res.json();
+        const current = data.current_weather;
+        const [text, icon] = weatherMap[current.weathercode] || ['날씨 정보', '☁️'];
+        document.getElementById('temp').textContent = Math.round(current.temperature) + '℃';
+        document.getElementById('weatherText').textContent = `부산 현재 날씨는 ${text}입니다. 외부 활동과 이동 계획을 세울 때 참고하세요.`;
+        document.getElementById('weatherIcon').textContent = icon;
+        document.getElementById('wind').textContent = Math.round(current.windspeed) + 'km/h';
+        document.getElementById('weatherCode').textContent = text;
+        const time = new Date(current.time);
+        document.getElementById('updated').textContent = time.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+      }catch(err){
+        document.getElementById('temp').textContent = '--℃';
+        document.getElementById('weatherText').textContent = '날씨 정보를 불러오지 못했습니다. 네트워크 연결 상태를 확인하세요.';
+        document.getElementById('weatherCode').textContent = '확인 필요';
+      }
+    }
+
+    function stripHtml(text){
+      const div = document.createElement('div');
+      div.innerHTML = text;
+      return div.textContent || div.innerText || '';
+    }
+
+    function fallbackNews(targetId, query){
+      const encoded = encodeURIComponent(query);
+      const target = document.getElementById(targetId);
+      target.innerHTML = `
+        <li><a class="news-item" href="https://news.google.com/search?q=${encoded}&hl=ko&gl=KR&ceid=KR%3Ako" target="_blank" rel="noopener"><span class="news-title">${query} 관련 최신 뉴스 검색하기</span><span class="news-meta">RSS 연결 실패 시 사용하는 대체 링크</span></a></li>
+        <li><a class="news-item" href="https://search.naver.com/search.naver?where=news&query=${encoded}" target="_blank" rel="noopener"><span class="news-title">네이버 뉴스에서 ${query} 확인하기</span><span class="news-meta">검색 결과 바로가기</span></a></li>
+      `;
+    }
+
+    async function loadNews(targetId, query){
+      const rss = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
+      const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(rss)}`;
+      const target = document.getElementById(targetId);
+      try{
+        const res = await fetch(proxy);
+        if(!res.ok) throw new Error('rss response error');
+        const xmlText = await res.text();
+        const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+        const items = [...xml.querySelectorAll('item')].slice(0,4);
+        if(!items.length) throw new Error('no rss items');
+        target.innerHTML = items.map(item => {
+          const title = stripHtml(item.querySelector('title')?.textContent || '뉴스 제목 없음');
+          const link = item.querySelector('link')?.textContent || '#';
+          const pubDate = item.querySelector('pubDate')?.textContent;
+          const dateText = pubDate ? new Date(pubDate).toLocaleDateString('ko-KR') : '날짜 정보 없음';
+          return `<li><a class="news-item" href="${link}" target="_blank" rel="noopener"><span class="news-title">${title}</span><span class="news-meta">${dateText}</span></a></li>`;
+        }).join('');
+      }catch(err){
+        fallbackNews(targetId, query);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadWeather();
+      loadNews('busanNews', '부산 이슈 사회복지 청년 고령화');
+      loadNews('pknuNews', '국립부경대학교');
+    });
+  </script>
+</body>
+</html>
