@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>사회복지사 1·2급 자격증 관련</title>
+  <meta name="description" content="사회복지사 1급·2급 자격증 취득 로드맵과 사회복지사 2급 필수·선택 과목 이수 체크리스트" />
+  <style>
+    :root {
+      --accent: #ff5b66;
+      --accent-dark: #d9414d;
+      --accent-soft: #fff0f1;
+      --accent-pale: #fff7f7;
+      --ink: #232323;
+      --muted: #777777;
+      --line: #f2c7cb;
+      --bg: #ffffff;
+      --card: #ffffff;
+      --shadow: 0 20px 50px rgba(255, 91, 102, 0.12);
+      --shadow-soft: 0 10px 30px rgba(45, 45, 45, 0.06);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(255, 91, 102, 0.13), transparent 34rem),
+        linear-gradient(180deg, #fff 0%, #fffafa 42%, #fff 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .top-lines {
+      padding-top: 20px;
+      border-top: 5px solid var(--accent);
+      position: relative;
+    }
+
+    .top-lines::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: var(--accent);
+      opacity: .45;
+      margin-top: 7px;
+    }
+
+    header.hero {
+      padding: 28px 0 18px;
+    }
+
+    .eyebrow {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: .02em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .hero-title {
+      margin: 22px 0 8px;
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", "Noto Serif KR", serif;
+      font-size: clamp(2.35rem, 7vw, 5.45rem);
+      line-height: .98;
+      letter-spacing: .015em;
+      font-weight: 900;
+      text-transform: uppercase;
+      word-break: keep-all;
+    }
+
+    .hero-kicker {
+      max-width: 780px;
+      margin: 0;
+      color: #4a4a4a;
+      font-size: clamp(1rem, 1.45vw, 1.16rem);
+      word-break: keep-all;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 10px;
+    }
+
+    .nav a, .btn, .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, .72);
+      color: #554245;
+      font-size: .92rem;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .nav a:hover, .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 28px 0 20px;
+    }
+
+    .summary-card, .card, .widget, .course-card, .status-panel {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(255, 91, 102, .18);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(8px);
+    }
+
+    .summary-card {
+      padding: 22px;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-card::after {
+      content: attr(data-number);
+      position: absolute;
+      right: -4px;
+      bottom: -46px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(255, 91, 102, .12);
+      line-height: 1;
+    }
+
+    .summary-card h2 {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+      font-size: 1.12rem;
+    }
+
+    .summary-card p {
+      margin: 0;
+      color: #555;
+      font-size: .96rem;
+      word-break: keep-all;
+    }
+
+    .widget-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin: 24px 0 38px;
+    }
+
+    .widget {
+      padding: 18px;
+      min-height: 190px;
+    }
+
+    .widget h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--accent-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .widget h3 span {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 500;
+    }
+
+    .widget .big {
+      font-size: 2.05rem;
+      font-weight: 850;
+      color: var(--ink);
+      margin: 8px 0 2px;
+    }
+
+    .widget p, .widget li {
+      font-size: .88rem;
+      color: #5c5c5c;
+    }
+
+    .widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .widget li a {
+      display: block;
+      border-bottom: 1px dashed rgba(255, 91, 102, .25);
+      padding-bottom: 7px;
+    }
+
+    .widget .link {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    section {
+      margin: 46px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 18px;
+      border-top: 3px solid var(--accent);
+      padding-top: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      color: var(--accent);
+      font-family: Georgia, "Times New Roman", "Noto Serif KR", serif;
+      line-height: 1.1;
+      word-break: keep-all;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+      word-break: keep-all;
+    }
+
+    .tracker-layout {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .status-panel {
+      padding: 20px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .status-panel h3 {
+      margin: 0 0 8px;
+      color: var(--accent-dark);
+      font-size: 1.2rem;
+    }
+
+    .select-wrap {
+      margin: 14px 0 18px;
+    }
+
+    label.small-label {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+      outline-color: var(--accent);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .metric {
+      border: 1px solid rgba(255, 91, 102, .16);
+      background: var(--accent-pale);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 1.55rem;
+      color: var(--accent-dark);
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      color: #666;
+      font-size: .82rem;
+      margin-top: 4px;
+    }
+
+    .progress-row {
+      margin: 16px 0;
+    }
+
+    .progress-row .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .88rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .bar {
+      height: 12px;
+      background: #f8dadd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #ff9c9f);
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    .remaining-box {
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fff;
+      margin-top: 14px;
+    }
+
+    .remaining-box h4 {
+      margin: 0 0 8px;
+      font-size: .98rem;
+      color: #3a3a3a;
+    }
+
+    .remaining-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #5a5a5a;
+      font-size: .88rem;
+      max-height: 170px;
+      overflow: auto;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    button.btn {
+      cursor: pointer;
+      font: inherit;
+      color: var(--accent-dark);
+      background: #fff;
+    }
+
+    .course-groups {
+      display: grid;
+      gap: 18px;
+    }
+
+    .course-card {
+      padding: 20px;
+    }
+
+    .course-card h3 {
+      margin: 0 0 4px;
+      color: var(--accent-dark);
+      font-size: 1.25rem;
+    }
+
+    .course-card .desc {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: .92rem;
+      word-break: keep-all;
+    }
+
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .course-item {
+      position: relative;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid rgba(255, 91, 102, .15);
+      border-radius: 14px;
+      padding: 12px;
+      background: #fff;
+      min-height: 76px;
+      transition: background .18s ease, transform .18s ease, border-color .18s ease;
+    }
+
+    .course-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 91, 102, .45);
+      background: var(--accent-pale);
+    }
+
+    .course-item input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    .course-name {
+      display: block;
+      font-weight: 800;
+      word-break: keep-all;
+      line-height: 1.32;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 7px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid rgba(255, 91, 102, .22);
+      font-size: .74rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .badge.gray {
+      background: #f7f7f7;
+      color: #6a6a6a;
+      border-color: #e8e8e8;
+    }
+
+    .notice {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-pale);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: #555;
+      word-break: keep-all;
+    }
+
+    .notice strong { color: var(--accent-dark); }
+
+    .route-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+    }
+
+    .card ul, .card ol {
+      margin: 0;
+      padding-left: 20px;
+      color: #555;
+    }
+
+    .source-box {
+      font-size: .86rem;
+      color: #666;
+      border-top: 1px solid var(--line);
+      padding: 18px 0 46px;
+      margin-top: 48px;
+    }
+
+    .source-box a {
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 20;
+      font-size: .9rem;
+    }
+
+    .toast.show {
+      opacity: .96;
+      transform: translateY(0);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1040px) {
+      .summary-grid, .widget-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tracker-layout { grid-template-columns: 1fr; }
+      .status-panel { position: static; }
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 24px, var(--max)); }
+      .eyebrow { display: block; }
+      .hero-title { font-size: clamp(2.1rem, 11vw, 4rem); }
+      .summary-grid, .widget-grid, .route-grid, .course-list { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .nav, .widget-grid, .actions, .toast { display: none !important; }
+      .status-panel { position: static; box-shadow: none; }
+      .course-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page top-lines">
+    <header class="hero" id="top">
+      <div class="eyebrow">
+        <span>국립부경대학교 사회복지학전공 · 자격증 이수 관리용</span>
+        <span>Social Worker License Roadmap</span>
+      </div>
+      <h1 class="hero-title">사회복지사 1·2급 자격증 관련</h1>
+      <p class="hero-kicker">사회복지사 2급 취득을 위한 필수·선택 과목을 체크하고, 현재까지 이수한 과목과 남은 학점을 바로 확인하는 홈페이지입니다. 1급은 2급 취득 이후 국가시험 응시를 준비하는 흐름으로 정리했습니다.</p>
+      <nav class="nav" aria-label="주요 메뉴">
+        <a href="#dashboard">자격증 요약</a>
+        <a href="#widgets">정보 위젯</a>
+        <a href="#tracker">2급 과목 체크</a>
+        <a href="#grade1">1급 준비</a>
+        <a href="#sources">출처</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="dashboard" aria-labelledby="dashboard-title">
+        <div class="section-head">
+          <div>
+            <h2 id="dashboard-title">자격증 취득 핵심 요약</h2>
+            <p>메인은 사회복지사 2급 이수 관리입니다. 날씨·뉴스·통계는 아래 위젯 영역에 작게 배치했습니다.</p>
+          </div>
+        </div>
+        <div class="grid summary-grid">
+          <article class="summary-card" data-number="2">
+            <h2>사회복지사 2급</h2>
+            <p>2020년 1월 1일 이후 시작 기준으로 전문학사 이상 학력과 사회복지 관련 <strong>필수 10과목 30학점 + 선택 7과목 21학점</strong>, 총 17과목 51학점 이상을 충족하는 방식으로 관리합니다.</p>
+          </article>
+          <article class="summary-card" data-number="1">
+            <h2>사회복지사 1급</h2>
+            <p>대학생 기준으로는 2급 자격 취득 요건을 갖춘 뒤 국가시험 응시자격을 확인하는 흐름입니다. 최종 응시 가능 여부는 학력·이수과목·경력 조건에 따라 달라집니다.</p>
+          </article>
+          <article class="summary-card" data-number="✓">
+            <h2>체크리스트 기능</h2>
+            <p>과목 옆 체크박스를 누르면 자동 저장됩니다. 필수 과목, 선택 과목, 남은 과목 수, 남은 학점이 자동 계산됩니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="widgets" aria-labelledby="widgets-title">
+        <div class="section-head">
+          <div>
+            <h2 id="widgets-title">보조 정보 위젯</h2>
+            <p>날씨, 부산 이슈, 국립부경대학교 뉴스, 사회복지 관련 통계를 메인 콘텐츠가 아닌 보조 위젯으로 구성했습니다.</p>
+          </div>
+        </div>
+        <div class="grid widget-grid">
+          <aside class="widget" aria-label="부산 날씨 위젯">
+            <h3>부산 날씨 <span>Open-Meteo</span></h3>
+            <div class="big" id="weather-temp">불러오는 중</div>
+            <p id="weather-desc">현재 부산 날씨 정보를 확인하고 있습니다.</p>
+            <p id="weather-detail" class="muted"></p>
+          </aside>
+
+          <aside class="widget" aria-label="부산의 이슈 위젯">
+            <h3>부산의 이슈 <span>뉴스</span></h3>
+            <ul id="busan-news">
+              <li>뉴스를 불러오는 중입니다.</li>
+            </ul>
+          </aside>
+
+          <aside class="widget" aria-label="국립부경대학교 뉴스 위젯">
+            <h3>국립부경대학교 뉴스 <span>뉴스</span></h3>
+            <ul id="pknu-news">
+              <li>뉴스를 불러오는 중입니다.</li>
+            </ul>
+          </aside>
+
+          <aside class="widget" aria-label="사회복지 관련 통계 위젯">
+            <h3>사회복지 관련 통계 <span>2025 기준</span></h3>
+            <p><strong>전국 65세 이상 인구 비중</strong></p>
+            <div class="big">20.3%</div>
+            <p>2025년 부산의 65세 이상 인구 비중은 24.5%로 제시되었습니다.</p>
+            <p><a class="link" href="https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000" target="_blank" rel="noopener">통계청 자료 보기</a></p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="tracker" aria-labelledby="tracker-title">
+        <div class="section-head">
+          <div>
+            <h2 id="tracker-title">사회복지사 2급 이수 과목 체크리스트</h2>
+            <p>아래 과목은 사회복지사 2급 자격 기준과 사용자가 제공한 학과 교과목표 이미지를 함께 반영했습니다. 체크 상태는 사용 중인 브라우저에 자동 저장됩니다.</p>
+          </div>
+        </div>
+
+        <div class="tracker-layout">
+          <aside class="status-panel" aria-live="polite">
+            <h3>나의 이수 현황</h3>
+            <p class="desc">과목을 체크하면 남은 과목과 학점이 바로 계산됩니다.</p>
+
+            <div class="select-wrap">
+              <label for="rule-select" class="small-label">적용 기준</label>
+              <select id="rule-select">
+                <option value="new">2020.1.1 이후 기준: 필수 10 + 선택 7 = 51학점</option>
+                <option value="old">2019.12.31 이전 일부 이수자 기준: 필수 10 + 선택 4 = 42학점</option>
+              </select>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <b id="total-completed">0</b>
+                <span>인정 과목 이수</span>
+              </div>
+              <div class="metric">
+                <b id="remaining-credits">51</b>
+                <span>남은 학점</span>
+              </div>
+              <div class="metric">
+                <b id="required-completed">0/10</b>
+                <span>필수 과목</span>
+              </div>
+              <div class="metric">
+                <b id="elective-completed">0/7</b>
+                <span>선택 과목</span>
+              </div>
+            </div>
+
+            <div class="progress-row">
+              <div class="label"><span>전체 진행률</span><strong id="total-percent">0%</strong></div>
+              <div class="bar"><div id="total-bar"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="label"><span>필수 과목</span><strong id="required-percent">0%</strong></div>
+              <div class="bar"><div id="required-bar"></div></div>
+            </div>
+            <div class="progress-row">
+              <div class="label"><span>선택 과목</span><strong id="elective-percent">0%</strong></div>
+              <div class="bar"><div id="elective-bar"></div></div>
+            </div>
+
+            <div class="remaining-box">
+              <h4>남은 필수 과목</h4>
+              <ul id="missing-required"><li>필수 과목을 선택해 주세요.</li></ul>
+            </div>
+            <div class="remaining-box">
+              <h4>선택 과목 추천</h4>
+              <ul id="missing-elective"><li>선택 과목을 선택해 주세요.</li></ul>
+            </div>
+
+            <div class="actions">
+              <button class="btn" type="button" id="clear-btn">체크 초기화</button>
+              <button class="btn" type="button" id="print-btn">인쇄/PDF</button>
+              <button class="btn" type="button" id="copy-btn">이수현황 복사</button>
+            </div>
+          </aside>
+
+          <div class="course-groups" id="course-groups">
+            <article class="course-card">
+              <h3>필수 과목 10과목</h3>
+              <p class="desc">2급 취득을 위해 모두 충족해야 하는 과목입니다. 사회복지현장실습은 과목 이수뿐 아니라 실습시간·세미나 요건도 함께 확인해야 합니다.</p>
+              <div class="course-list" id="required-list"></div>
+            </article>
+
+            <article class="course-card">
+              <h3>선택 과목 — 이미지 내 학과 교과목 기준</h3>
+              <p class="desc">제공한 교과목표 이미지에 있는 과목 중 사회복지사 2급 선택과목으로 계산되는 과목입니다. 현재 기준에서는 이 중 7과목 이상을 충족하면 됩니다.</p>
+              <div class="course-list" id="elective-image-list"></div>
+            </article>
+
+            <article class="course-card">
+              <h3>추가 공식 선택 과목</h3>
+              <p class="desc">사회복지사 2급 기준표에는 포함되지만, 제공된 이미지에서는 뚜렷하게 확인되지 않은 선택과목입니다. 타 기관·타 학기 이수 여부를 확인할 때 사용하세요.</p>
+              <div class="course-list" id="elective-extra-list"></div>
+            </article>
+
+            <article class="course-card">
+              <h3>학과 참고 과목 — 자격 계산 제외</h3>
+              <p class="desc">이미지에 보이는 과목이지만 사회복지사 2급 필수·선택 기준으로 바로 계산하지 않는 과목입니다. 졸업요건이나 학과 전공이수에는 의미가 있을 수 있으나, 자격증 인정 여부는 별도 확인이 필요합니다.</p>
+              <div class="course-list" id="reference-list"></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top: 22px;">
+          <strong>확인 필요:</strong> 실제 자격증 인정은 성적증명서의 교과목명, 이수 시점, 실습 기준, 한국사회복지사협회 자격관리센터 심사 기준에 따라 달라질 수 있습니다. 특히 2020년 이전에 사회복지 관련 과목을 1과목 이상 이수한 경우에는 선택과목 기준이 달라질 수 있습니다.
+        </div>
+      </section>
+
+      <section id="grade1" aria-labelledby="grade1-title">
+        <div class="section-head">
+          <div>
+            <h2 id="grade1-title">사회복지사 1급 준비 흐름</h2>
+            <p>이 페이지는 2급 이수 관리가 중심이지만, 1급 준비 방향도 함께 확인할 수 있게 정리했습니다.</p>
+          </div>
+        </div>
+        <div class="grid route-grid">
+          <article class="card">
+            <h3>1급으로 가는 기본 흐름</h3>
+            <ol>
+              <li>사회복지사 2급 자격 취득 요건을 충족한다.</li>
+              <li>본인의 학력·경력 기준에 따라 1급 국가시험 응시자격을 확인한다.</li>
+              <li>Q-Net 시험 공고와 한국사회복지사협회 응시자격 서류심사를 확인한다.</li>
+              <li>사회복지기초, 사회복지실천, 사회복지정책과 제도 영역을 중심으로 준비한다.</li>
+            </ol>
+          </article>
+          <article class="card">
+            <h3>1급 시험 과목 영역</h3>
+            <ul>
+              <li>사회복지기초: 인간행동과 사회환경, 사회복지조사론</li>
+              <li>사회복지실천: 사회복지실천론, 사회복지실천기술론, 지역사회복지론</li>
+              <li>사회복지정책과 제도: 사회복지정책론, 사회복지행정론, 사회복지법제론</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="sources" class="source-box" aria-labelledby="source-title">
+        <h2 id="source-title">자료 출처 및 기준</h2>
+        <p>자격 과목 기준은 한국사회복지사협회 자격관리센터와 사회복지사업법 시행령 별표 기준을 바탕으로 정리했습니다. 1급 응시자격은 Q-Net 사회복지사 1급 자격상세정보를 함께 참고했습니다. 사회복지 통계 위젯은 통계청 2025 고령자 통계와 KOSIS·e-나라지표 자료 링크를 참고하도록 구성했습니다.</p>
+        <p>
+          <a href="https://www.welfare.net/lic/" target="_blank" rel="noopener">한국사회복지사협회 자격관리센터</a> ·
+          <a href="https://www.welfare.net/lic/sub-deliberation/subject-menual" target="_blank" rel="noopener">이수과목 안내</a> ·
+          <a href="https://www.q-net.or.kr/crf005.do?gId=52&gSite=L&id=crf00503" target="_blank" rel="noopener">Q-Net 사회복지사 1급</a> ·
+          <a href="https://www.kostat.go.kr/board.es?act=view&bid=10820&list_no=438832&mid=a10301010000" target="_blank" rel="noopener">통계청 2025 고령자 통계</a> ·
+          <a href="https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=2760" target="_blank" rel="noopener">e-나라지표 국민기초생활보장 수급 현황</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">저장되었습니다.</div>
+
+  <script>
+    const STORAGE_KEY = "pknu-social-worker-license-checks-v2";
+    const RULE_KEY = "pknu-social-worker-license-rule";
+    const CREDIT_PER_COURSE = 3;
+
+    const requiredCourses = [
+      { id: "req_intro", name: "사회복지학개론", meta: ["필수", "이미지 내 미확인", "3학점"] },
+      { id: "req_human", name: "인간행동과사회환경", meta: ["필수", "1학년", "3학점"] },
+      { id: "req_policy", name: "사회복지정책론", meta: ["필수", "3학년", "3학점"] },
+      { id: "req_law", name: "사회복지법제와실천", meta: ["필수", "3학년", "3학점"] },
+      { id: "req_practice", name: "사회복지실천론", meta: ["필수", "2학년", "3학점"] },
+      { id: "req_skill", name: "사회복지실천기술론", meta: ["필수", "2학년", "3학점"] },
+      { id: "req_research", name: "사회복지조사론", meta: ["필수", "2학년", "3학점"] },
+      { id: "req_admin", name: "사회복지행정론", meta: ["필수", "4학년", "3학점"] },
+      { id: "req_community", name: "지역사회복지론", meta: ["필수", "4학년", "3학점"] },
+      { id: "req_field", name: "사회복지현장실습", meta: ["필수", "3학년", "실습 포함"] }
+    ];
+
+    const imageElectives = [
+      { id: "el_old", name: "노인복지론", meta: ["선택", "2학년"] },
+      { id: "el_social_problem", name: "사회문제론", meta: ["선택", "2학년"] },
+      { id: "el_youth", name: "청소년복지론", meta: ["선택", "2학년"] },
+      { id: "el_family", name: "가족복지론", meta: ["선택", "2학년"] },
+      { id: "el_history", name: "사회복지역사", meta: ["선택", "2학년"] },
+      { id: "el_ethics", name: "사회복지윤리와철학", meta: ["선택", "2학년"] },
+      { id: "el_child", name: "아동복지론", meta: ["선택", "2학년"] },
+      { id: "el_school", name: "학교사회복지론", meta: ["선택", "2학년"] },
+      { id: "el_case", name: "사례관리론", meta: ["선택", "3학년"] },
+      { id: "el_security", name: "사회보장론", meta: ["선택", "3학년"] },
+      { id: "el_data", name: "사회복지자료분석론", meta: ["선택", "3학년"] },
+      { id: "el_women", name: "여성복지론", meta: ["선택", "3학년"] },
+      { id: "el_disability", name: "장애인복지론", meta: ["선택", "3학년"] },
+      { id: "el_program", name: "프로그램개발과평가", meta: ["선택", "3학년"] },
+      { id: "el_culture", name: "사회복지와문화다양성", meta: ["선택", "3학년"] },
+      { id: "el_industry", name: "산업복지론", meta: ["선택", "3학년"] },
+      { id: "el_mental_sw", name: "정신건강사회복지론", meta: ["선택", "3학년"] },
+      { id: "el_international", name: "국제사회복지론", meta: ["선택", "4학년"] },
+      { id: "el_welfare_state", name: "복지국가론", meta: ["선택", "4학년"] },
+      { id: "el_rights", name: "사회복지와인권", meta: ["선택", "4학년"] },
+      { id: "el_volunteer", name: "자원봉사론", meta: ["선택", "4학년"] },
+      { id: "el_poverty", name: "빈곤론", meta: ["선택", "4학년"] },
+      { id: "el_supervision", name: "사회복지지도감독론", meta: ["선택", "4학년"] },
+      { id: "el_medical", name: "의료사회복지론", meta: ["선택", "4학년"] }
+    ];
+
+    const extraElectives = [
+      { id: "el_family_counsel", name: "가족상담 및 가족치료", meta: ["공식 선택", "이미지 미표기"] },
+      { id: "el_correction", name: "교정복지론", meta: ["공식 선택", "이미지 미표기"] },
+      { id: "el_mental", name: "정신건강론", meta: ["공식 선택", "이미지 미표기"] }
+    ];
+
+    const referenceCourses = [
+      { id: "ref_stats", name: "기초통계론", meta: ["학과 참고", "자격 계산 제외"] },
+      { id: "ref_org", name: "행정조직론", meta: ["학과 참고", "자격 계산 제외"] },
+      { id: "ref_practical", name: "사회복지실무역량", meta: ["학과 참고", "자격 계산 제외"] },
+      { id: "ref_deep_field", name: "사회복지현장심화실습", meta: ["학과 참고", "자격 계산 제외"] }
+    ];
+
+    const rules = {
+      new: { required: 10, elective: 7, credits: 51, field: "160시간 이상 실습과 세미나 요건 확인" },
+      old: { required: 10, elective: 4, credits: 42, field: "종전 기준 적용 가능 여부 확인" }
+    };
+
+    const allOfficialElectives = [...imageElectives, ...extraElectives];
+    const state = loadState();
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1600);
+    }
+
+    function renderCourseList(targetId, courses, type) {
+      const target = document.getElementById(targetId);
+      target.innerHTML = courses.map(course => {
+        const checked = state[course.id] ? "checked" : "";
+        const badges = course.meta.map((m, index) => `<span class="badge ${index > 0 ? 'gray' : ''}">${escapeHtml(m)}</span>`).join("");
+        return `
+          <label class="course-item" for="${course.id}">
+            <input type="checkbox" id="${course.id}" data-type="${type}" ${checked} />
+            <span>
+              <span class="course-name">${escapeHtml(course.name)}</span>
+              <span class="course-meta">${badges}</span>
+            </span>
+          </label>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function countChecked(courses) {
+      return courses.filter(course => state[course.id]).length;
+    }
+
+    function updateDashboard() {
+      const selectedRule = document.getElementById("rule-select").value;
+      localStorage.setItem(RULE_KEY, selectedRule);
+      const rule = rules[selectedRule];
+      const requiredDone = countChecked(requiredCourses);
+      const electiveDoneRaw = countChecked(allOfficialElectives);
+      const electiveDone = Math.min(electiveDoneRaw, rule.elective);
+      const totalTarget = rule.required + rule.elective;
+      const totalDone = Math.min(requiredDone, rule.required) + electiveDone;
+      const remainingRequired = Math.max(0, rule.required - requiredDone);
+      const remainingElective = Math.max(0, rule.elective - electiveDoneRaw);
+      const remainingCredits = (remainingRequired + remainingElective) * CREDIT_PER_COURSE;
+
+      document.getElementById("total-completed").textContent = `${totalDone}/${totalTarget}`;
+      document.getElementById("remaining-credits").textContent = remainingCredits;
+      document.getElementById("required-completed").textContent = `${Math.min(requiredDone, rule.required)}/${rule.required}`;
+      document.getElementById("elective-completed").textContent = `${Math.min(electiveDoneRaw, rule.elective)}/${rule.elective}`;
+
+      setBar("total", totalDone, totalTarget);
+      setBar("required", requiredDone, rule.required);
+      setBar("elective", electiveDoneRaw, rule.elective);
+
+      const missingRequired = requiredCourses.filter(course => !state[course.id]);
+      const missingRequiredEl = document.getElementById("missing-required");
+      missingRequiredEl.innerHTML = missingRequired.length
+        ? missingRequired.map(course => `<li>${escapeHtml(course.name)}</li>`).join("")
+        : `<li>필수 과목을 모두 체크했습니다.</li>`;
+
+      const uncheckedElectives = allOfficialElectives.filter(course => !state[course.id]);
+      const missingElectiveEl = document.getElementById("missing-elective");
+      if (remainingElective <= 0) {
+        missingElectiveEl.innerHTML = `<li>선택 과목 기준을 충족했습니다. 추가 선택 이수는 여유 과목으로 관리됩니다.</li>`;
+      } else {
+        missingElectiveEl.innerHTML = uncheckedElectives.slice(0, Math.max(remainingElective, 4))
+          .map(course => `<li>${escapeHtml(course.name)}</li>`).join("") + `<li><strong>선택 ${remainingElective}과목, ${remainingElective * CREDIT_PER_COURSE}학점 필요</strong></li>`;
+      }
+    }
+
+    function setBar(prefix, done, target) {
+      const safeDone = Math.min(done, target);
+      const percent = target === 0 ? 0 : Math.round((safeDone / target) * 100);
+      document.getElementById(`${prefix}-bar`).style.width = `${percent}%`;
+      document.getElementById(`${prefix}-percent`).textContent = `${percent}%`;
+    }
+
+    function wireCheckboxes() {
+      document.querySelectorAll('input[type="checkbox"][data-type]').forEach(input => {
+        input.addEventListener("change", event => {
+          state[event.target.id] = event.target.checked;
+          saveState();
+          updateDashboard();
+          showToast("체크 상태가 저장되었습니다.");
+        });
+      });
+    }
+
+    function resetChecks() {
+      if (!confirm("체크한 과목을 모두 초기화할까요?")) return;
+      Object.keys(state).forEach(key => delete state[key]);
+      saveState();
+      document.querySelectorAll('input[type="checkbox"][data-type]').forEach(input => input.checked = false);
+      updateDashboard();
+      showToast("체크 상태를 초기화했습니다.");
+    }
+
+    async function copyProgress() {
+      const selectedRule = document.getElementById("rule-select").value;
+      const rule = rules[selectedRule];
+      const checkedRequired = requiredCourses.filter(c => state[c.id]).map(c => c.name);
+      const checkedElectives = allOfficialElectives.filter(c => state[c.id]).map(c => c.name);
+      const requiredDone = checkedRequired.length;
+      const electiveDone = Math.min(checkedElectives.length, rule.elective);
+      const remainingCredits = (Math.max(0, rule.required - requiredDone) + Math.max(0, rule.elective - checkedElectives.length)) * CREDIT_PER_COURSE;
+      const text = [
+        "[사회복지사 2급 이수현황]",
+        `적용 기준: ${selectedRule === "new" ? "2020.1.1 이후 기준" : "2019.12.31 이전 일부 이수자 기준"}`,
+        `필수: ${requiredDone}/${rule.required}`,
+        `선택: ${electiveDone}/${rule.elective}`,
+        `남은 학점: ${remainingCredits}학점`,
+        "",
+        `체크한 필수과목: ${checkedRequired.length ? checkedRequired.join(", ") : "없음"}`,
+        `체크한 선택과목: ${checkedElectives.length ? checkedElectives.join(", ") : "없음"}`
+      ].join("\n");
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("이수현황을 복사했습니다.");
+      } catch (e) {
+        prompt("아래 내용을 복사하세요.", text);
+      }
+    }
+
+    function initCourses() {
+      renderCourseList("required-list", requiredCourses, "required");
+      renderCourseList("elective-image-list", imageElectives, "elective");
+      renderCourseList("elective-extra-list", extraElectives, "elective");
+      renderCourseList("reference-list", referenceCourses, "reference");
+      wireCheckboxes();
+      const savedRule = localStorage.getItem(RULE_KEY);
+      if (savedRule && rules[savedRule]) document.getElementById("rule-select").value = savedRule;
+      updateDashboard();
+    }
+
+    const weatherCodes = {
+      0: "맑음", 1: "대체로 맑음", 2: "부분적으로 흐림", 3: "흐림",
+      45: "안개", 48: "서리 안개", 51: "약한 이슬비", 53: "이슬비", 55: "강한 이슬비",
+      61: "약한 비", 63: "비", 65: "강한 비", 71: "약한 눈", 73: "눈", 75: "강한 눈",
+      80: "약한 소나기", 81: "소나기", 82: "강한 소나기", 95: "뇌우"
+    };
+
+    async function loadWeather() {
+      const temp = document.getElementById("weather-temp");
+      const desc = document.getElementById("weather-desc");
+      const detail = document.getElementById("weather-detail");
+      try {
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=35.1796&longitude=129.0756&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m&timezone=Asia%2FSeoul";
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("weather fetch failed");
+        const data = await res.json();
+        const current = data.current;
+        temp.textContent = `${Math.round(current.temperature_2m)}℃`;
+        desc.textContent = `현재 상태: ${weatherCodes[current.weather_code] || "확인 중"}`;
+        detail.textContent = `습도 ${current.relative_humidity_2m}% · 강수량 ${current.precipitation}mm · 풍속 ${current.wind_speed_10m}km/h`;
+      } catch (error) {
+        temp.textContent = "부산";
+        desc.textContent = "날씨를 불러오지 못했습니다.";
+        detail.innerHTML = `<a class="link" href="https://www.weather.go.kr/w/index.do" target="_blank" rel="noopener">기상청에서 확인하기</a>`;
+      }
+    }
+
+    async function loadNews(query, targetId, fallbackUrl) {
+      const target = document.getElementById(targetId);
+      const rss = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=ko&gl=KR&ceid=KR:ko`;
+      const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(rss)}`;
+      try {
+        const res = await fetch(proxy);
+        if (!res.ok) throw new Error("news fetch failed");
+        const text = await res.text();
+        const xml = new DOMParser().parseFromString(text, "text/xml");
+        const items = Array.from(xml.querySelectorAll("item")).slice(0, 4);
+        if (!items.length) throw new Error("no items");
+        target.innerHTML = items.map(item => {
+          const title = item.querySelector("title")?.textContent || "뉴스 제목";
+          const link = item.querySelector("link")?.textContent || fallbackUrl;
+          return `<li><a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(title)}</a></li>`;
+        }).join("");
+      } catch (error) {
+        target.innerHTML = `<li>뉴스를 자동으로 불러오지 못했습니다.</li><li><a class="link" href="${fallbackUrl}" target="_blank" rel="noopener">Google 뉴스에서 직접 보기</a></li>`;
+      }
+    }
+
+    document.getElementById("rule-select").addEventListener("change", updateDashboard);
+    document.getElementById("clear-btn").addEventListener("click", resetChecks);
+    document.getElementById("print-btn").addEventListener("click", () => window.print());
+    document.getElementById("copy-btn").addEventListener("click", copyProgress);
+
+    initCourses();
+    loadWeather();
+    loadNews("부산 이슈", "busan-news", "https://news.google.com/search?q=%EB%B6%80%EC%82%B0%20%EC%9D%B4%EC%8A%88&hl=ko&gl=KR&ceid=KR%3Ako");
+    loadNews("국립부경대학교", "pknu-news", "https://news.google.com/search?q=%EA%B5%AD%EB%A6%BD%EB%B6%80%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90&hl=ko&gl=KR&ceid=KR%3Ako");
+  </script>
+</body>
+</html>
