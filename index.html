@@ -645,6 +645,243 @@
 
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+
+
+    .stats-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(17, 24, 39, 0.42);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.18s ease, visibility 0.18s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .stats-window {
+      width: min(1080px, 100%);
+      max-height: min(86vh, 820px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(var(--main-rgb), 0.25);
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.18s ease;
+    }
+
+    .modal-backdrop.open .stats-window {
+      transform: translateY(0) scale(1);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(var(--main-rgb), 0.16);
+      background:
+        linear-gradient(90deg, rgba(var(--main-rgb), 0.16), rgba(var(--accent-rgb), 0.12)),
+        #fff;
+    }
+
+    .window-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .window-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      flex: 0 0 auto;
+    }
+
+    .window-dots span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--main);
+      opacity: 0.86;
+    }
+
+    .window-dots span:nth-child(2) { background: var(--orange); }
+    .window-dots span:nth-child(3) { background: var(--green); }
+
+    .window-title h2 {
+      margin: 0;
+      color: var(--main-dark);
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .window-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(var(--main-rgb), 0.18);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--main-dark);
+      cursor: pointer;
+      font-size: 1.25rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .stats-body {
+      overflow-y: auto;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(var(--main-rgb), 0.08), transparent 24rem),
+        #fffdfc;
+    }
+
+    .stats-intro {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .mini-stat {
+      padding: 13px 14px;
+      border: 1px solid rgba(var(--main-rgb), 0.13);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.90);
+      box-shadow: 0 10px 24px rgba(84, 55, 55, 0.06);
+    }
+
+    .mini-stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .mini-stat strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--main-dark);
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.62rem;
+      line-height: 1.08;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .chart-card,
+    .stats-table-card {
+      border: 1px solid rgba(var(--main-rgb), 0.13);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 30px rgba(84, 55, 55, 0.08);
+    }
+
+    .chart-card {
+      padding: 14px;
+    }
+
+    .chart-card h3,
+    .stats-table-card h3 {
+      margin: 0 0 6px;
+      color: var(--main-dark);
+      font-family: 'Jua', 'Gowun Dodum', sans-serif;
+      font-size: 1.22rem;
+      letter-spacing: -0.04em;
+    }
+
+    .chart-card p,
+    .stats-source-note {
+      margin: 0;
+      color: #5f6672;
+      font-size: 0.83rem;
+      font-weight: 750;
+      word-break: keep-all;
+    }
+
+    .chart-canvas {
+      width: 100%;
+      height: 260px;
+      margin-top: 10px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff, rgba(var(--main-rgb), 0.035));
+    }
+
+    .stats-table-card {
+      padding: 14px;
+    }
+
+    .stats-table-wrap {
+      overflow: auto;
+      max-height: 260px;
+      margin-top: 10px;
+      border: 1px solid rgba(var(--main-rgb), 0.12);
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .stats-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+
+    .stats-table th,
+    .stats-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(var(--main-rgb), 0.10);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .stats-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      color: var(--main-dark);
+      background: rgba(var(--main-rgb), 0.075);
+      font-weight: 950;
+    }
+
+    .stats-table td:first-child {
+      font-weight: 950;
+      color: var(--main-dark);
+    }
+
+    .stats-window .controls {
+      margin-top: 12px;
+    }
+
     @media (max-width: 1080px) {
       .quick-guide { grid-template-columns: repeat(3, 1fr); }
       .guide-card { grid-column: 1 / -1; }
@@ -662,6 +899,11 @@
       .status-area { gap: 10px; }
       .theme-head { align-items: flex-start; flex-direction: column; }
       .theme-head p { text-align: left; }
+
+      .stats-intro, .chart-grid { grid-template-columns: 1fr; }
+      .stats-window { max-height: 90vh; }
+      .chart-canvas { height: 230px; }
+
     }
 
     @media print {
@@ -728,6 +970,7 @@
             <button class="btn primary" id="copyBtn" type="button">현황 복사</button>
             <button class="btn" id="printBtn" type="button">인쇄/PDF</button>
             <button class="btn" id="resetBtn" type="button">초기화</button>
+            <button class="btn stats-open-btn" type="button">1급 시험 통계 보기</button>
           </div>
         </article>
 
@@ -821,6 +1064,7 @@
               <li><a href="https://kosis.kr" target="_blank" rel="noopener">KOSIS 국가통계포털</a></li>
               <li><a href="https://www.index.go.kr" target="_blank" rel="noopener">e-나라지표 복지 지표</a></li>
               <li><a href="https://www.mohw.go.kr" target="_blank" rel="noopener">보건복지부 통계 자료</a></li>
+              <li><button class="btn stats-open-btn" type="button">사회복지사 1급 시험 통계 열기</button></li>
             </ul>
           </article>
         </div>
@@ -843,6 +1087,65 @@
     </main>
 
     <footer>© 사회복지사 자격증 체크리스트 · GitHub Pages용 단일 HTML 파일</footer>
+  </div>
+
+
+
+  <div id="statsOverlay" class="modal-backdrop" aria-hidden="true">
+    <section class="stats-window" role="dialog" aria-modal="true" aria-labelledby="statsWindowTitle">
+      <div class="window-bar">
+        <div class="window-title">
+          <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <h2 id="statsWindowTitle">사회복지사 1급 시험 합격률 통계</h2>
+        </div>
+        <button class="window-close" id="statsCloseBtn" type="button" aria-label="통계 창 닫기">×</button>
+      </div>
+      <div class="stats-body">
+        <div class="stats-intro" aria-label="사회복지사 1급 시험 요약 통계">
+          <div class="mini-stat"><span>누적 접수자</span><strong>578,991명</strong></div>
+          <div class="mini-stat"><span>누적 응시자</span><strong>462,771명</strong></div>
+          <div class="mini-stat"><span>누적 합격자</span><strong>170,484명</strong></div>
+          <div class="mini-stat"><span>전체 합격률</span><strong>36.84%</strong></div>
+        </div>
+
+        <div class="chart-grid">
+          <article class="chart-card">
+            <h3>회차별 합격률 변화</h3>
+            <p>2003년 제1회부터 2025년 제23회까지의 합격률 추이입니다.</p>
+            <canvas id="passRateChart" class="chart-canvas" aria-label="사회복지사 1급 시험 합격률 선 그래프"></canvas>
+          </article>
+          <article class="chart-card">
+            <h3>응시자와 합격자 비교</h3>
+            <p>각 회차의 응시자 수와 합격자 수를 함께 비교했습니다.</p>
+            <canvas id="peopleChart" class="chart-canvas" aria-label="사회복지사 1급 시험 응시자와 합격자 막대 그래프"></canvas>
+          </article>
+        </div>
+
+        <article class="stats-table-card">
+          <h3>상세 통계표</h3>
+          <p class="stats-source-note">업로드한 이미지의 사회복지사 1급 자격증 시험 통계 자료를 기준으로 정리했습니다.</p>
+          <div class="stats-table-wrap">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>시험일</th>
+                  <th>접수자</th>
+                  <th>응시자</th>
+                  <th>합격자</th>
+                  <th>합격률</th>
+                </tr>
+              </thead>
+              <tbody id="statsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="controls">
+            <button class="btn primary" id="statsCopyBtn" type="button">통계 요약 복사</button>
+            <button class="btn" id="statsCloseBottomBtn" type="button">닫기</button>
+          </div>
+        </article>
+      </div>
+    </section>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite">복사되었습니다.</div>
@@ -902,6 +1205,7 @@
         button.classList.toggle('active', button.dataset.theme.toLowerCase() === hex.toLowerCase());
       });
       if (save) localStorage.setItem(THEME_KEY, hex);
+      if (document.getElementById('statsOverlay')?.classList.contains('open')) requestAnimationFrame(drawStatsCharts);
     }
 
     function initTheme() {
@@ -1096,10 +1400,248 @@
       }
     }
 
+
+
+    const FIRST_GRADE_STATS = [
+      { round: '제1회', date: '2003.04.27', applicants: 6114, examinees: 5190, passers: 3487, rate: 67.19 },
+      { round: '제2회', date: '2004.03.07', applicants: 9082, examinees: 7233, passers: 4543, rate: 62.81 },
+      { round: '제3회', date: '2005.03.06', applicants: 10287, examinees: 8635, passers: 3731, rate: 43.21 },
+      { round: '제4회', date: '2006.03.12', applicants: 14617, examinees: 12151, passers: 5056, rate: 41.61 },
+      { round: '제5회', date: '2007.03.04', applicants: 20580, examinees: 16166, passers: 4006, rate: 24.78 },
+      { round: '제6회', date: '2008.02.03', applicants: 27017, examinees: 19493, passers: 9033, rate: 46.34 },
+      { round: '제7회', date: '2009.02.08', applicants: 29770, examinees: 22753, passers: 7081, rate: 31.12 },
+      { round: '제8회', date: '2010.01.24', applicants: 26587, examinees: 23050, passers: 9700, rate: 42.08 },
+      { round: '제9회', date: '2011.01.23', applicants: 25471, examinees: 21868, passers: 3119, rate: 14.26 },
+      { round: '제10회', date: '2012.02.05', applicants: 28143, examinees: 23627, passers: 10254, rate: 43.40 },
+      { round: '제11회', date: '2013.01.26', applicants: 25719, examinees: 20544, passers: 5809, rate: 28.28 },
+      { round: '제12회', date: '2014.01.25', applicants: 27882, examinees: 22604, passers: 6363, rate: 28.15 },
+      { round: '제13회', date: '2015.01.24', applicants: 26327, examinees: 21393, passers: 6764, rate: 31.62 },
+      { round: '제14회', date: '2016.01.23', applicants: 25949, examinees: 20946, passers: 9846, rate: 47.01 },
+      { round: '제15회', date: '2017.01.21', applicants: 24674, examinees: 19514, passers: 5250, rate: 26.90 },
+      { round: '제16회', date: '2018.01.20', applicants: 27519, examinees: 21975, passers: 7352, rate: 33.46 },
+      { round: '제17회', date: '2019.01.19', applicants: 28271, examinees: 22646, passers: 7734, rate: 34.15 },
+      { round: '제18회', date: '2020.02.08', applicants: 33787, examinees: 25462, passers: 8388, rate: 32.94 },
+      { round: '제19회', date: '2021.02.06', applicants: 35598, examinees: 28391, passers: 17158, rate: 60.43 },
+      { round: '제20회', date: '2022.01.22', applicants: 31016, examinees: 24248, passers: 8753, rate: 36.10 },
+      { round: '제21회', date: '2023.01.14', applicants: 30528, examinees: 24119, passers: 9673, rate: 40.11 },
+      { round: '제22회', date: '2024.01.13', applicants: 31608, examinees: 25458, passers: 7554, rate: 29.67 },
+      { round: '제23회', date: '2025.01.12', applicants: 32445, examinees: 25305, passers: 9830, rate: 38.85 }
+    ];
+
+    function comma(value) {
+      return Number(value).toLocaleString('ko-KR');
+    }
+
+    function getThemeColor(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    function prepareCanvas(canvas) {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const width = Math.max(rect.width, 320);
+      const height = Math.max(rect.height, 220);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { ctx, width, height };
+    }
+
+    function drawAxes(ctx, width, height, pad, yTicks, yMax, suffix = '') {
+      ctx.clearRect(0, 0, width, height);
+      ctx.font = "12px 'Gowun Dodum', sans-serif";
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(107, 114, 128, 0.22)';
+      ctx.fillStyle = '#6b7280';
+      yTicks.forEach((tick) => {
+        const y = pad.top + (1 - tick / yMax) * (height - pad.top - pad.bottom);
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(width - pad.right, y);
+        ctx.stroke();
+        ctx.fillText(`${tick}${suffix}`, 8, y + 4);
+      });
+      ctx.strokeStyle = 'rgba(107, 114, 128, 0.35)';
+      ctx.beginPath();
+      ctx.moveTo(pad.left, pad.top);
+      ctx.lineTo(pad.left, height - pad.bottom);
+      ctx.lineTo(width - pad.right, height - pad.bottom);
+      ctx.stroke();
+    }
+
+    function drawPassRateChart() {
+      const canvas = document.getElementById('passRateChart');
+      if (!canvas) return;
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const pad = { left: 44, right: 18, top: 18, bottom: 38 };
+      const main = getThemeColor('--main') || '#ff6978';
+      const dark = getThemeColor('--main-dark') || '#df4c5b';
+      const yMax = 70;
+      drawAxes(ctx, width, height, pad, [0, 10, 20, 30, 40, 50, 60, 70], yMax, '%');
+      const plotW = width - pad.left - pad.right;
+      const plotH = height - pad.top - pad.bottom;
+      const x = (i) => pad.left + (plotW * i) / (FIRST_GRADE_STATS.length - 1);
+      const y = (rate) => pad.top + (1 - rate / yMax) * plotH;
+
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = main;
+      ctx.beginPath();
+      FIRST_GRADE_STATS.forEach((item, i) => {
+        const px = x(i);
+        const py = y(item.rate);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+
+      FIRST_GRADE_STATS.forEach((item, i) => {
+        const px = x(i);
+        const py = y(item.rate);
+        ctx.beginPath();
+        ctx.fillStyle = '#fff';
+        ctx.strokeStyle = main;
+        ctx.lineWidth = 2;
+        ctx.arc(px, py, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        if (i % 3 === 0 || i === FIRST_GRADE_STATS.length - 1) {
+          ctx.fillStyle = '#6b7280';
+          ctx.font = "11px 'Gowun Dodum', sans-serif";
+          ctx.textAlign = 'center';
+          ctx.fillText(item.date.slice(0, 4), px, height - 14);
+        }
+      });
+
+      const highest = FIRST_GRADE_STATS.reduce((a, b) => a.rate > b.rate ? a : b);
+      const lowest = FIRST_GRADE_STATS.reduce((a, b) => a.rate < b.rate ? a : b);
+      ctx.textAlign = 'left';
+      ctx.font = "700 12px 'Gowun Dodum', sans-serif";
+      ctx.fillStyle = dark;
+      ctx.fillText(`최고 ${highest.round} ${highest.rate.toFixed(2)}%`, pad.left + 8, pad.top + 16);
+      ctx.fillText(`최저 ${lowest.round} ${lowest.rate.toFixed(2)}%`, pad.left + 8, pad.top + 34);
+    }
+
+    function drawPeopleChart() {
+      const canvas = document.getElementById('peopleChart');
+      if (!canvas) return;
+      const { ctx, width, height } = prepareCanvas(canvas);
+      const pad = { left: 48, right: 18, top: 20, bottom: 38 };
+      const main = getThemeColor('--main') || '#ff6978';
+      const orange = getThemeColor('--orange') || '#ffb35c';
+      const maxPeople = 30000;
+      drawAxes(ctx, width, height, pad, [0, 10000, 20000, 30000], maxPeople, '');
+      const plotW = width - pad.left - pad.right;
+      const plotH = height - pad.top - pad.bottom;
+      const groupW = plotW / FIRST_GRADE_STATS.length;
+      const barW = Math.max(3, groupW * 0.28);
+      FIRST_GRADE_STATS.forEach((item, i) => {
+        const baseX = pad.left + groupW * i + groupW / 2;
+        const yExam = pad.top + (1 - Math.min(item.examinees, maxPeople) / maxPeople) * plotH;
+        const yPass = pad.top + (1 - Math.min(item.passers, maxPeople) / maxPeople) * plotH;
+        const baseY = height - pad.bottom;
+        ctx.fillStyle = 'rgba(107, 114, 128, 0.38)';
+        ctx.fillRect(baseX - barW - 1, yExam, barW, baseY - yExam);
+        ctx.fillStyle = main;
+        ctx.fillRect(baseX + 1, yPass, barW, baseY - yPass);
+        if (i % 4 === 0 || i === FIRST_GRADE_STATS.length - 1) {
+          ctx.fillStyle = '#6b7280';
+          ctx.font = "11px 'Gowun Dodum', sans-serif";
+          ctx.textAlign = 'center';
+          ctx.fillText(item.date.slice(2, 4), baseX, height - 14);
+        }
+      });
+      ctx.textAlign = 'left';
+      ctx.font = "700 12px 'Gowun Dodum', sans-serif";
+      ctx.fillStyle = 'rgba(107, 114, 128, 0.90)';
+      ctx.fillRect(pad.left + 8, pad.top + 2, 14, 8);
+      ctx.fillText('응시자', pad.left + 28, pad.top + 10);
+      ctx.fillStyle = main;
+      ctx.fillRect(pad.left + 86, pad.top + 2, 14, 8);
+      ctx.fillText('합격자', pad.left + 106, pad.top + 10);
+    }
+
+    function drawStatsCharts() {
+      drawPassRateChart();
+      drawPeopleChart();
+    }
+
+    function renderStatsTable() {
+      const body = document.getElementById('statsTableBody');
+      if (!body || body.dataset.rendered === 'true') return;
+      body.innerHTML = FIRST_GRADE_STATS.map((item) => `
+        <tr>
+          <td>${item.round}</td>
+          <td>${item.date}</td>
+          <td>${comma(item.applicants)}명</td>
+          <td>${comma(item.examinees)}명</td>
+          <td>${comma(item.passers)}명</td>
+          <td>${item.rate.toFixed(2)}%</td>
+        </tr>
+      `).join('');
+      body.dataset.rendered = 'true';
+    }
+
+    function openStatsWindow() {
+      const overlay = document.getElementById('statsOverlay');
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      renderStatsTable();
+      requestAnimationFrame(drawStatsCharts);
+    }
+
+    function closeStatsWindow() {
+      const overlay = document.getElementById('statsOverlay');
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    async function copyStatsSummary() {
+      const highest = FIRST_GRADE_STATS.reduce((a, b) => a.rate > b.rate ? a : b);
+      const lowest = FIRST_GRADE_STATS.reduce((a, b) => a.rate < b.rate ? a : b);
+      const text = [
+        '[사회복지사 1급 시험 합격률 통계(2003~2025)]',
+        '누적 접수자: 578,991명',
+        '누적 응시자: 462,771명',
+        '누적 합격자: 170,484명',
+        '전체 합격률: 36.84%',
+        `최고 합격률: ${highest.round} ${highest.rate.toFixed(2)}%`,
+        `최저 합격률: ${lowest.round} ${lowest.rate.toFixed(2)}%`,
+        `2025년 제23회 합격률: ${FIRST_GRADE_STATS[FIRST_GRADE_STATS.length - 1].rate.toFixed(2)}%`
+      ].join('\n');
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('통계 요약이 복사되었습니다.');
+      } catch (error) {
+        showToast('복사 기능을 사용할 수 없습니다.');
+      }
+    }
+
+    function initStatsWindow() {
+      document.querySelectorAll('.stats-open-btn').forEach((button) => {
+        button.addEventListener('click', openStatsWindow);
+      });
+      document.getElementById('statsCloseBtn')?.addEventListener('click', closeStatsWindow);
+      document.getElementById('statsCloseBottomBtn')?.addEventListener('click', closeStatsWindow);
+      document.getElementById('statsCopyBtn')?.addEventListener('click', copyStatsSummary);
+      document.getElementById('statsOverlay')?.addEventListener('click', (event) => {
+        if (event.target.id === 'statsOverlay') closeStatsWindow();
+      });
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && document.getElementById('statsOverlay')?.classList.contains('open')) closeStatsWindow();
+      });
+      window.addEventListener('resize', () => {
+        if (document.getElementById('statsOverlay')?.classList.contains('open')) drawStatsCharts();
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       renderCourses();
       updateStatus();
       initTheme();
+      initStatsWindow();
       loadWeather();
       loadRssNews('busanNews', '부산 이슈');
       loadRssNews('pknuNews', '국립부경대학교');
